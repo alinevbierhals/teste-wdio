@@ -43,11 +43,6 @@ class LoginPage {
         return await this.mensagemSucesso.getText()
     }
 
-    async mensagemEmailInvalido() {
-        return await this.mensagemErro.getText()
-    }
-
-
     async fecharAlerta() {
         await this.botaoOk.click()
     }

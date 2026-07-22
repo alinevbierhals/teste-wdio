@@ -1,10 +1,6 @@
 
 import loginPage from "../pageobjects/login.page";
 
-beforeEach(async () => {
-    await loginPage.abrirMenu()
-});
-
 describe('Funcionalidade login', () => {
 
     beforeEach(async () => {

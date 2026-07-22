@@ -1,42 +1,36 @@
 class FormPage {
-    constructor(parameters) {
 
-    }
+    // Seletores
 
-    //Seletores
+    get menuForm() { return $("accessibility id:Forms") };
+    get campoTexto() { return $("accessibility id:text-input") };
+    get labelResultado() { return $("accessibility id:input-text-result") };
+    get dropdown() { return $("-android uiautomator:new UiSelector().resourceId(\"text_input\")") };
 
-    get MenuForm() { return $("accessibility id:Forms") };
-    get CampoTexto() { return $("accessibility id:text-input") };
-    get LabelResultado() { return $("accessibility id:input-text-result") };
-    get Dropdown() { return $("-android uiautomator:new UiSelector().resourceId(\"text_input\")") };
-    
-
-    
-    //Métodos
+    // Métodos
 
     async abrirMenuForm() {
-        await this.MenuForm.click()
+        await this.menuForm.click()
     }
 
     async preencherTexto(texto) {
-        await this.CampoTexto.waitForDisplayed();
-        await this.CampoTexto.clearValue();
-        await this.CampoTexto.setValue(texto);
+        await this.campoTexto.waitForDisplayed();
+        await this.campoTexto.clearValue();
+        await this.campoTexto.setValue(texto);
     }
 
-
     async validarResultado(texto) {
-        await expect(this.LabelResultado).toHaveText(texto);
+        await expect(this.labelResultado).toHaveText(texto);
     }
 
     async selecionarOpcaoDropdown(txtOpcao) {
-        await this.Dropdown.click();
+        await this.dropdown.click();
         const opcao = $(`-android uiautomator:new UiSelector().text(\"${txtOpcao}\")`);
         await opcao.click();
     }
 
     async validarOpcaoDropdown() {
-        return await this.Dropdown.getText();
+        return await this.dropdown.getText();
     }
 
 }
