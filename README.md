@@ -16,10 +16,12 @@ Suíte de testes automatizados de UI para um aplicativo Android, usando **Webdri
 ├── test/
 │   ├── pageobjects/            # Page Objects (seletores + ações da tela)
 │   │   ├── login.page.js
-│   │   └── form.page.js
+│   │   ├── form.page.js
+│   │   └── swipe.page.js
 │   └── specs/                  # Casos de teste
 │       ├── login.spec.js
-│       └── form.spec.js
+│       ├── form.spec.js
+│       └── swipe.spec.js
 └── wdio.conf.js                # Configuração do WebdriverIO/Appium
 ```
 
@@ -36,6 +38,10 @@ O projeto segue o padrão **Page Object Model**: cada tela do app tem uma classe
 - Preenchimento de campo de texto
 - Seleção de opção em dropdown
 - Alternância de switch (on/off)
+
+**Swipe** ([swipe.spec.js](test/specs/swipe.spec.js))
+- Troca de cartão ao arrastar horizontalmente (gestos com W3C Actions)
+- Revelação de mensagem escondida ao arrastar verticalmente
 
 ## Pré-requisitos
 
@@ -64,6 +70,7 @@ Ou rode um arquivo de spec específico:
 ```bash
 npx wdio run ./wdio.conf.js --spec ./test/specs/login.spec.js
 npx wdio run ./wdio.conf.js --spec ./test/specs/form.spec.js
+npx wdio run ./wdio.conf.js --spec ./test/specs/swipe.spec.js
 ```
 
 ## Autora
