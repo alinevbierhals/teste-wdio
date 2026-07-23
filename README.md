@@ -80,6 +80,15 @@ npx wdio run ./wdio.conf.js --spec ./test/specs/swipe.spec.js
 npx wdio run ./wdio.conf.js --spec ./test/specs/drag.spec.js
 ```
 
+## Limitações conhecidas
+
+Automação mobile com Appium + UiAutomator2 é naturalmente mais suscetível a instabilidade do que testes web, especialmente rodando em emulador (em vez de dispositivo físico) numa máquina com poucos recursos livres. Durante o desenvolvimento deste projeto, foram observados:
+
+- **Crashes ocasionais do processo de instrumentação do UiAutomator2**, principalmente ao rodar múltiplos spec files em sequência ou após relançar o app repetidamente. Mitigado com `specFileRetries: 1` em [wdio.conf.js](wdio.conf.js), que reexecuta automaticamente um spec file que falhe por instabilidade do ambiente.
+- **Gestos de swipe/drag são sensíveis a duração e distância do toque.** Diferentes componentes (carrossel, scroll, drag and drop) exigem calibrações distintas — por exemplo, o carrossel da tela de Swipe só troca de cartão se o arrasto cobrir mais de 50% da largura da tela, e o Drag and Drop precisa de uma pequena pausa entre tocar e mover para o app reconhecer o gesto como um arrasto.
+
+Se a suíte apresentar falhas intermitentes, geralmente resolve reiniciar o emulador e o servidor Appium antes de rodar novamente.
+
 ## Autora
 
 Aline Bierhals
