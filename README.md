@@ -88,6 +88,18 @@ Para rodar a análise de lint (ESLint):
 npm run lint
 ```
 
+## Relatório de testes (Allure)
+
+Os testes geram dados de execução automaticamente (pasta `allure-results/`, não versionada) graças ao [`@wdio/allure-reporter`](https://webdriver.io/docs/allure-reporter). Depois de rodar a suíte, gere e abra o relatório visual:
+
+```bash
+npm run allure:report
+```
+
+Isso abre um dashboard no navegador com o resultado de cada teste, linha do tempo de execução, gráficos de aprovação/falha e histórico de passos. Requer [Java](https://www.java.com/) instalado (usado pelo Allure Commandline).
+
+Só gerar o relatório (sem abrir automaticamente): `npm run allure:generate`. Só abrir um relatório já gerado: `npm run allure:open`.
+
 ## Integração contínua
 
 O workflow em [.github/workflows/ci.yml](.github/workflows/ci.yml) roda o lint automaticamente a cada push/PR para a `main`. Os testes E2E (Appium) não rodam em CI — eles dependem de um emulador Android real, o que exigiria uma configuração significativamente mais complexa (veja a seção de limitações abaixo).

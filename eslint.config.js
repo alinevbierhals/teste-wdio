@@ -2,6 +2,9 @@ const globals = require('globals');
 
 module.exports = [
     {
+        ignores: ['allure-report/**', 'allure-results/**', 'app/**', 'chromedriver-mobile/**'],
+    },
+    {
         files: ['**/*.js'],
         languageOptions: {
             ecmaVersion: 'latest',
