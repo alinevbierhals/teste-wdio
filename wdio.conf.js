@@ -65,8 +65,8 @@ exports.config = {
         {
             "platformName": "Android",
             "appium:automationName": "UiAutomator2",
-            "appium:deviceName": "Medium Phone",
-            "appium:platformVersion": "17.0",
+            "appium:deviceName": "nightwatch-android-11",
+            "appium:platformVersion": "11.0",
             "appium:app": "app/android.wdio.native.app.v2.2.0.apk"
         }
     ],
@@ -141,7 +141,14 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec'],
+    reporters: [
+        'spec',
+        ['allure', {
+            outputDir: 'allure-results',
+            disableWebdriverStepsReporting: true,
+            disableWebdriverScreenshotsReporting: false,
+        }],
+    ],
 
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/

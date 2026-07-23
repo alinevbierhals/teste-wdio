@@ -19,22 +19,31 @@ class SwipePage {
     }
 
     async arrastarHorizontal() {
-        await browser.swipe({
-            direction: 'left',
-            duration: 5000,
-            percent: 0.5,
-            scrollableElement: this.containerSwipe,
-        });
+        const carrossel = this.containerSwipe;
+        const { x, y } = await carrossel.getLocation();
+        const { width, height } = await carrossel.getSize();
+
+        const yCentro = y + height / 2;
+        const xInicio = x + width * 0.9;
+        const xFim = x + width * 0.1;
+
+        await driver.action('pointer')
+            .move({ duration: 0, x: xInicio, y: yCentro })
+            .down({ button: 0 })
+            .move({ duration: 1000, x: xFim, y: yCentro })
+            .up({ button: 0 })
+            .perform();
     }
 
     async arrastarVertical() {
-        const container = this.containerVertical;
-        const { x, y } = await container.getLocation();
-        const { width, height } = await container.getSize();
+        const containerLoc = await this.containerVertical.getLocation();
+        const containerSize = await this.containerVertical.getSize();
+        const carrosselLoc = await this.containerSwipe.getLocation();
+        const carrosselSize = await this.containerSwipe.getSize();
 
-        const xCentro = x + width / 2;
-        const yInicio = y + height * 0.9;
-        const yFim = y + height * 0.3;
+        const xCentro = containerLoc.x + containerSize.width / 2;
+        const yInicio = carrosselLoc.y + carrosselSize.height + 40;
+        const yFim = containerLoc.y + 40;
 
         await driver.action('pointer')
             .move({ duration: 0, x: xCentro, y: yInicio })
@@ -45,7 +54,7 @@ class SwipePage {
     }
 
     async revelarMensagemEscondida() {
-        const maxTentativas = 5;
+        const maxTentativas = 10;
 
         for (let tentativa = 0; tentativa < maxTentativas; tentativa++) {
             if (await this.mensagemEscondida.isDisplayed()) {

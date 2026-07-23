@@ -56,7 +56,7 @@ O projeto segue o padrão **Page Object Model**: cada tela do app tem uma classe
 - [Node.js](https://nodejs.org/) 18+
 - [Appium](https://appium.io/) instalado globalmente ou via `@wdio/appium-service` (já incluso nas dependências)
 - [Android SDK](https://developer.android.com/studio) com `adb` configurado no PATH
-- Um emulador Android disponível (o projeto está configurado para um dispositivo chamado `Medium Phone`, Android 17.0 — ajuste em [wdio.conf.js](wdio.conf.js) conforme seu ambiente)
+- Um emulador Android disponível (o projeto está configurado para um dispositivo chamado `nightwatch-android-11`, Android 11.0 — ajuste em [wdio.conf.js](wdio.conf.js) conforme seu ambiente)
 - O APK do app de teste em `app/android.wdio.native.app.v2.2.0.apk` (usa-se o [WebdriverIO native demo app](https://github.com/webdriverio/native-demo-app))
 
 ## Instalação

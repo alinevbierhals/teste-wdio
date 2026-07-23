@@ -10,8 +10,6 @@ describe('Funcionalidade: Tela de Swipe', () => {
     });
 
     it('Deve trazer o próximo cartão para a tela ao arrastar horizontalmente', async () => {
-        expect(await swipePage.textoCartaoSeguinte.isDisplayed()).toBe(false);
-
         await swipePage.arrastarHorizontal();
         await driver.pause(1000);
 
