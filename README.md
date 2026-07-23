@@ -17,11 +17,13 @@ Suíte de testes automatizados de UI para um aplicativo Android, usando **Webdri
 │   ├── pageobjects/            # Page Objects (seletores + ações da tela)
 │   │   ├── login.page.js
 │   │   ├── form.page.js
-│   │   └── swipe.page.js
+│   │   ├── swipe.page.js
+│   │   └── drag.page.js
 │   └── specs/                  # Casos de teste
 │       ├── login.spec.js
 │       ├── form.spec.js
-│       └── swipe.spec.js
+│       ├── swipe.spec.js
+│       └── drag.spec.js
 └── wdio.conf.js                # Configuração do WebdriverIO/Appium
 ```
 
@@ -42,6 +44,10 @@ O projeto segue o padrão **Page Object Model**: cada tela do app tem uma classe
 **Swipe** ([swipe.spec.js](test/specs/swipe.spec.js))
 - Troca de cartão ao arrastar horizontalmente (gestos com W3C Actions)
 - Revelação de mensagem escondida ao arrastar verticalmente
+
+**Drag and Drop** ([drag.spec.js](test/specs/drag.spec.js))
+- Remoção da peça da bandeja ao soltá-la na zona correta
+- Conclusão do quebra-cabeça (9 peças) com exibição da mensagem de parabéns
 
 ## Pré-requisitos
 
@@ -71,6 +77,7 @@ Ou rode um arquivo de spec específico:
 npx wdio run ./wdio.conf.js --spec ./test/specs/login.spec.js
 npx wdio run ./wdio.conf.js --spec ./test/specs/form.spec.js
 npx wdio run ./wdio.conf.js --spec ./test/specs/swipe.spec.js
+npx wdio run ./wdio.conf.js --spec ./test/specs/drag.spec.js
 ```
 
 ## Autora
