@@ -1,5 +1,7 @@
 # teste-wdio
 
+![CI](https://github.com/alinevbierhals/teste-wdio/actions/workflows/ci.yml/badge.svg)
+
 Suíte de testes automatizados de UI para um aplicativo Android, usando **WebdriverIO** + **Appium**. Projeto criado para praticar automação de testes mobile com Page Object Model (POM).
 
 ## Tecnologias utilizadas
@@ -79,6 +81,16 @@ npx wdio run ./wdio.conf.js --spec ./test/specs/form.spec.js
 npx wdio run ./wdio.conf.js --spec ./test/specs/swipe.spec.js
 npx wdio run ./wdio.conf.js --spec ./test/specs/drag.spec.js
 ```
+
+Para rodar a análise de lint (ESLint):
+
+```bash
+npm run lint
+```
+
+## Integração contínua
+
+O workflow em [.github/workflows/ci.yml](.github/workflows/ci.yml) roda o lint automaticamente a cada push/PR para a `main`. Os testes E2E (Appium) não rodam em CI — eles dependem de um emulador Android real, o que exigiria uma configuração significativamente mais complexa (veja a seção de limitações abaixo).
 
 ## Limitações conhecidas
 
